@@ -122,6 +122,7 @@ PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 export PATH
 
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:/usr/local/sbin"
 
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
@@ -132,3 +133,10 @@ prompt_context() {
 if [ -f ~/.git-completion.zsh ]; then
   . ~/.git-completion.zsh
 fi
+
+unsetopt share_history
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# elixir version manager
+test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"

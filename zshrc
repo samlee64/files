@@ -2,37 +2,37 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/samlee/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="af-magic"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion.  # Case-sensitive completion must be off. _ and - will be interchangeable.
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
+# DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -44,6 +44,9 @@ ZSH_THEME="af-magic"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -63,8 +66,8 @@ ZSH_THEME="af-magic"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
@@ -99,7 +102,6 @@ source $ZSH/oh-my-zsh.sh
 alias fuck='$(thefuck $(fc -ln -1))'
 
 export PS1="%~ : "
-export PATH=$PATH:/Users/samlee/.ssi/bin
 
 alias clea='clear'
 alias clera='clear'
@@ -110,11 +112,14 @@ alias gl="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen
 
 alias tigs='tig status'
 
-alias drip='ssi-drip-toolkit'
-
 #GIT
 alias gc='git checkout'
 alias gb='git branch'
+alias gr1='git reset HEAD~1'
+
+#FZF
+alias vif='vi $(fzf)'
+
 
 # Setting PATH for Python 3.6
 # The original version is saved in .bash_profile.pysave
@@ -123,6 +128,7 @@ export PATH
 
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$PATH:/usr/local/sbin"
+export PATH="$HOME/.docker/bin:$PATH"
 
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
@@ -130,9 +136,9 @@ prompt_context() {
   fi
 }
 
-if [ -f ~/.git-completion.zsh ]; then
-  . ~/.git-completion.zsh
-fi
+# if [ -f ~/.git-completion.zsh ]; then
+#   . ~/.git-completion.zsh
+# fi
 
 unsetopt share_history
 
@@ -140,3 +146,25 @@ unsetopt share_history
 
 # elixir version manager
 test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
+
+# Zip
+export STARTERVIEW=~/ziprecruiter
+export PATH=$STARTERVIEW/bin:$PATH
+export PATH=$STARTERVIEW/infrastructure/terraform/bin:$PATH
+export PATH=/Users/samuell/go/bin:$PATH
+export PATH=/Users/samuell/bin:$PATH
+
+
+alias cdb='cd ~/workspace/mono-viz'
+alias cdp='cd ~/ziprecruiter/common/typescript/framework-grpc'
+alias cdw='cd ~/workspace'
+
+
+# Zip k8s
+alias k8s-d='export KUBECONFIG=~/.kube/configs/d1-dev-uw2; echo $KUBECONFIG'
+alias start-devxp='kc sync d-samuell -f www/starterview/layouts/develop'
+
+
+# Perl
+# PERL_MM_OPT="INSTALL_BASE=$HOME/perl5" cpan local::lib
+# eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"

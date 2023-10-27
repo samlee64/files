@@ -7,14 +7,23 @@ set clipboard=unnamed
 set rtp+=/user/local/lib/python2.7/site-packages/powerline/bindings/vim
 set rtp+=~/.vim/bundle/Vundle.vim
 
+
+""" Install plug
+""" https://github.com/junegunn/vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+""" Install Plugged
+
 call plug#begin('~/.vim/plugged')
 """ Plugs
 " Tools
 Plug 'mtth/scratch.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug '/usr/local/opt/fzf'
 Plug 'mileszs/ack.vim'
 Plug 'dbakker/vim-projectroot'
 Plug 'chriskempson/base16-vim'
@@ -34,6 +43,7 @@ Plug 'slashmili/alchemist.vim'
 Plug 'shime/vim-livedown'
 " typescript
 Plug 'leafgarland/typescript-vim'
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'HerringtonDarkholme/yats.vim'
 "Plug 'Quramy/vim-js-pretty-template'
 "autocmd FileType typescript let $PATH .= ":" . trim(system("npm bin"))
@@ -42,6 +52,10 @@ Plug 'hashivim/vim-terraform'
 Plug 'b4b4r07/vim-hcl'
 Plug 'fatih/vim-hclfmt'
 "Plug 'Valloric/YouCompleteMe'
+Plug 'prisma/vim-prisma'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
+
 call plug#end()
 filetype plugin indent on    " required
 
@@ -77,6 +91,14 @@ let g:ale_open_list = 1
 "let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
+
+" show Perl::Critic rules which have been violated
+let g:ale_perl_perlcritic_showrules = 1
+let g:ale_type_map = {
+\    'perlcritic': {'ES': 'WS', 'E': 'W'},
+\}
+
+
 
 let g:NERDTreeWinSize = 20
 
@@ -196,8 +218,5 @@ set completeopt+=noinsert
 autocmd FileType typescript nnoremap <Leader>d :split <bar> YcmCompleter GoToDefinition <CR>
 autocmd FileType typescript nnoremap <Leader>t :YcmCompleter GetType <CR>
 autocmd FileType typescript nnoremap <Leader>r :YcmCompleter RefactorRename
-
-
-
 
 cnoreabbrev F ALEGoToDefinition

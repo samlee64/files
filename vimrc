@@ -20,6 +20,7 @@ endif
 call plug#begin('~/.vim/plugged')
 """ Plugs
 " Tools
+Plug 'edkolev/tmuxline.vim'
 Plug 'mtth/scratch.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'kien/rainbow_parentheses.vim'
@@ -54,6 +55,9 @@ Plug 'fatih/vim-hclfmt'
 "Plug 'Valloric/YouCompleteMe'
 Plug 'prisma/vim-prisma'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'nvim-lualine/lualine.nvim'
+" If you want to have icons in your statusline choose one of these
+Plug 'nvim-tree/nvim-web-devicons'
 
 
 call plug#end()
@@ -69,7 +73,8 @@ au BufRead,BufNewFile *.dockerfile set filetype=dockerfile
 "format onSave
 "autocmd BufWritePre *.ts Neoformat
 "let g:neoformat_try_formatprg = 1
-autocmd FileType typescript set formatprg=prettier\ --stdin\ --parser\ typescript\ --single-quote\ --trailing-comma\ all\ --print-width\ 100
+"autocmd FileType typescript set formatprg=prettier\ --stdin\ --parser\ typescript\ --single-quote\ --trailing-comma\ all\ --print-width\ 100
+autocmd FileType typescript set formatprg=prettier\ --stdin\ --parser\ typescript\ --trailing-comma\ all\ --print-width\ 100
 
 "Some remapping needed for gitblame plugin
 nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
@@ -81,6 +86,8 @@ let g:ale_fixers['elm'] = ['elm-format']
 let g:ale_fixers['typescript'] = ['prettier']
 let g:ale_fixers['json'] = ['prettier']
 let g:ale_fixers['rust'] = ['rustfmt']
+let g:ale_fixers['go'] = []
+
 
 let g:ale_list_window_size = 1
 let g:ale_fix_on_save = 1
@@ -95,8 +102,8 @@ let g:ale_javascript_prettier_use_local_config = 1
 " show Perl::Critic rules which have been violated
 let g:ale_perl_perlcritic_showrules = 1
 let g:ale_type_map = {
-\    'perlcritic': {'ES': 'WS', 'E': 'W'},
-\}
+      \    'perlcritic': {'ES': 'WS', 'E': 'W'},
+      \}
 
 
 
@@ -166,8 +173,8 @@ function! RestoreRegister()
 endfunction
 
 function! s:Repl()
-    let s:restore_reg = @"
-    return "p@=RestoreRegister()\<cr>"
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
 endfunction
 
 
@@ -187,13 +194,13 @@ let g:elm_detailed_complete = 0
 let g:elm_format_autosave = 1
 let g:elm_format_fail_silently = 0
 let g:elm_setup_keybindings = 1
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_ex = '$(npm bin)/eslint'
+"let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_javascript_eslint_ex = '$(npm bin)/eslint'
 
 
 
 let g:ale_yaml_yamllint_options =
-\   get(g:, 'ale_yaml_yamllint_options', '-c $HOME/.yamllint.yml')
+      \   get(g:, 'ale_yaml_yamllint_options', '-c $HOME/.yamllint.yml')
 
 " Scratch
 let g:scratch_autohide = "hidden"
@@ -220,3 +227,9 @@ autocmd FileType typescript nnoremap <Leader>t :YcmCompleter GetType <CR>
 autocmd FileType typescript nnoremap <Leader>r :YcmCompleter RefactorRename
 
 cnoreabbrev F ALEGoToDefinition
+
+
+
+
+let g:tmuxline_powerline_separators = 0
+

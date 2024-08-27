@@ -155,9 +155,17 @@ export PATH=/Users/samuell/go/bin:$PATH
 export PATH=/Users/samuell/bin:$PATH
 
 
-alias cdb='cd ~/workspace/mono-viz'
-alias cdp='cd ~/ziprecruiter/common/typescript/framework-grpc'
+alias cdfr='cd ~/ziprecruiter/common/typescript/framework_grpc'
 alias cdw='cd ~/workspace'
+alias cdz='cd ~/ziprecruiter'
+alias cdf='cd ~/ziprecruiter/tools/fastlane'
+alias cdfp='cd ~/ziprecruiter/tools/fastlane/project_plans/typescript'
+alias cdfe='cd ~/ziprecruiter/tools/fastlane/examples'
+alias cdn='cd ~/ziprecruiter/tools/fastlane/examples/ts_grpc_web_nextjs'
+alias cdnn='cd ~/ziprecruiter/tools/fastlane/project_plans/typescript/grpc_web_nextjs_service/v1/files'
+alias cdk='cd ~/qmk_firmware/keyboards/bastardkb/skeletyl/keymaps/slee64'
+alias cdh='cd ~/ziprecruiter/jobseeker/home'
+alias cdt='cd ~/ziprecruiter/common/typescript'
 
 
 # Zip k8s

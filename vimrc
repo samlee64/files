@@ -83,7 +83,7 @@ nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 let g:ale_elm_format_options = '--yes --elm-version=0.19'
 let g:ale_fixers = {}
 let g:ale_fixers['elm'] = ['elm-format']
-let g:ale_fixers['typescript'] = ['prettier']
+let g:ale_fixers['typescript'] = ['biome']
 let g:ale_fixers['json'] = ['prettier']
 let g:ale_fixers['rust'] = ['rustfmt']
 let g:ale_fixers['go'] = []

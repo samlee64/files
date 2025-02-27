@@ -107,19 +107,23 @@ alias clea='clear'
 alias clera='clear'
 alias sl='ls'
 alias k='kubectl'
-########eval $(thefuck --alias)
-alias gl="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all"
-
 alias tigs='tig status'
 
 #GIT
 alias gc='git checkout'
-alias gb='git branch'
+alias gb='~/git-branch.js'
+alias gd='~/git-branch-delete.js'
 alias gr1='git reset HEAD~1'
+alias gl="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all"
 
 #FZF
 alias vif='vi $(fzf)'
 
+# TouchX
+alias touchx='touch_and_chmod_x'
+touch_and_chmod_x() {
+    touch "$1" && chmod +x "$1"
+}
 
 # Setting PATH for Python 3.6
 # The original version is saved in .bash_profile.pysave
@@ -155,17 +159,25 @@ export PATH=/Users/samuell/go/bin:$PATH
 export PATH=/Users/samuell/bin:$PATH
 
 
+
 alias cdfr='cd ~/ziprecruiter/common/typescript/framework_grpc'
 alias cdw='cd ~/workspace'
 alias cdz='cd ~/ziprecruiter'
 alias cdf='cd ~/ziprecruiter/tools/fastlane'
-alias cdfp='cd ~/ziprecruiter/tools/fastlane/project_plans/typescript'
 alias cdfe='cd ~/ziprecruiter/tools/fastlane/examples'
-alias cdn='cd ~/ziprecruiter/tools/fastlane/examples/ts_grpc_web_nextjs'
-alias cdnn='cd ~/ziprecruiter/tools/fastlane/project_plans/typescript/grpc_web_nextjs_service/v1/files'
 alias cdk='cd ~/qmk_firmware/keyboards/bastardkb/skeletyl/keymaps/slee64'
-alias cdh='cd ~/ziprecruiter/jobseeker/home'
+alias cdkk='cd ~/qmk_firmware/keyboards/crkbd/rev1/keymaps/slee64'
+alias cdh='cd ~/ziprecruiter/jobseeker/home/web'
+alias cdhh='cd ~/ziprecruiter/jobseeker/home/apis/saved_jobs'
+
 alias cdt='cd ~/ziprecruiter/common/typescript'
+alias cdfdk='cd ~/ziprecruiter/common/typescript/fdk-nextjs'
+
+alias cdn='cd ~/ziprecruiter/tools/fastlane/examples/ts_grpc_web_nextjs'
+alias cdnn='cd ~/ziprecruiter/tools/fdk/blueprints/typescript/grpc_web_nextjs_service/v1/files'
+alias cdm='cd ~/ziprecruiter/tools/fastlane/examples/ts_grpc_web'
+alias cdmm='cd ~/ziprecruiter/tools/fdk/blueprints/typescript/grpc_web_service/v1/files'
+
 
 
 # Zip k8s
